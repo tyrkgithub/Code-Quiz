@@ -1,4 +1,4 @@
-# <h1>Week Three Challenge - Code Quiz</h1>
+# <h1>Week Six Challenge - Code Quiz</h1>
   <br/>
  <h2>My Task</h2> 
    <p>This weeks challenge is creating a timed quiz with javascript functions which saves the highscore.</p>
