@@ -1,68 +1,63 @@
+// KEY
 let answer = true
-let time = 0
 let questionCount = 0
 let counter = -1
+let score = 0
+let timeTaken = 0
 
 // GET ELEMENT
 let startButton = document.getElementById('start');
 let timerClock = document.getElementById('time');
+let timeDiv = document.getElementsByClassName('timer');
 let startScreen = document.getElementById('start-screen');
 let questionsDiv = document.getElementById('questions');
 let questionTitle = document.getElementById('question-title');
 let choices = document.getElementById('choices');
 let endScreen = document.getElementById('end-screen');
 let finalScore = document.getElementById('final-score');
+// let finalTime = document.getElementById('final-time');
 let initials = document.getElementById('initials');
+let submit = document.getElementById('submit');
 let feedback = document.getElementById('feedback');
+let highscores = document.getElementById('highscores')
+let time = (questions.length *10)
 
 
-let score = 0
-
-finalScore.textContent = score
 
 // FUNCTIONS
-startButton.addEventListener("click", function(event){
-    event.preventDefault()
-    startGame()
-    clock()
-})
-
-function addHighscore(){
-    function showResponse(event) {
-        // Prevent default action
-        event.preventDefault();
-        console.log(event);
-        var response = "Thank you for your submission " + nameInput.value + "! We will reach out to you at " + emailInput.value + ".";
-        submissionResponseEl.textContent = response;
-      }
-        
-      // Add listener to submit element
-      submitEl.addEventListener("click", showResponse);
-}
+// END GAME
 function endGame() {
     feedback.innerHTML= ""
     endScreen.setAttribute("class","start")
     questionsDiv.setAttribute("class","hide")
-
 }
 
 
+//TIMER RUNS OUT
 function ranOut(){
     timerClock.textContent = "You ran out of time! Refresh the page to start again!"
+    questionsDiv.setAttribute("class","hide")
 }
 
+
+
+// TIMER
 function clock(){
-    let time = (questions.length *10)
+    feedback.innerHTML= ""
     let timeInterval = setInterval(function() {
         time--;
         timerClock.textContent = time
-
-    if (time === 0) {
+    if ((time === 0) && (counter < questions.length)) {
         clearInterval(timeInterval)
-        ranOut()
+        ranOut()}
+    else if (counter === questions.length) {
+        clearInterval(timeInterval)
+        timeTaken = ((questions.length * 10) - time)
     }
+    // finalTime.textContent = timeTaken
 },1000)
 }
+
 
 function nextQuestion(){
     counter++
@@ -71,127 +66,124 @@ function nextQuestion(){
     }
     choices.innerHTML = ""
     questionTitle.textContent = (questions[counter].Question)
-    var option1 = document.createElement("button")
+    let option1 = document.createElement("button")
     option1.innerText = questions[counter].option[0]
     option1.value = questions[counter].option[0]
-    option1.addEventListener("click", updateScore);
-    var option2 = document.createElement("button")
+    option1.addEventListener("click", updateScore)
+    let option2 = document.createElement("button")
     option2.innerText = questions[counter].option[1]
     option2.value = questions[counter].option[1]
     option2.addEventListener("click", updateScore);
-    var option3 = document.createElement("button")
+   let option3 = document.createElement("button")
     option3.innerText = questions[counter].option[2]
     option3.value = questions[counter].option[2]
     option3.addEventListener("click", updateScore);
-    var option4 = document.createElement("button")
+   let option4 = document.createElement("button")
     option4.innerText = questions[counter].option[3]
     option4.value = questions[counter].option[3]
     option4.addEventListener("click", updateScore);
-    choices.appendChild(option1)
+   choices.appendChild(option1)
     choices.appendChild(option2)
     choices.appendChild(option3)
     choices.appendChild(option4)
 }
 
+// UPDATE SCORE
 function updateScore(event){
     feedback.innerHTML= ""
+    finalScore.textContent = score
+    if (counter === questions.length) {
+        endGame()
+    }
 if (event.target.value === questions[counter].correctAnswer) {
 score++
-feedback.innerHTML= "correct"
+feedback.innerHTML= "Correct!"
 } else {
+    time-=10
     feedback.innerHTML= `Wrong! The correct answer was ${questions[counter].correctAnswer}`
 }
 nextQuestion()
-
 }
 
-
+// START GAME
 function startGame(){
     questionsDiv.setAttribute("class", "start")
-
-
-    
+    startScreen.setAttribute("class", "hide")
     if (questions.Choices === questions.correctAnswer) {
         score++
         localStorage.setItem("score", score)
-    } else {
-        time += time-1000
     }
         nextQuestion()
 }
 
 
+startButton.addEventListener("click", function(event){
+    event.preventDefault()
+    startGame()
+    clock()
+})
 
-// function getQuestion() {
-//     questionDiv.setAttribute("class","start")
-//     document.getElementById("start-screen").setAttribute("class","hide")
-//     let currentQuestion = questionTO[currentQuestionIndex];
-//     questionTitle.textContent = currentQuestion.question;
-//     choices.textContent = ""; // clear any previous choices
-//     for(let i = 0; i < currentQuestion.choices.length; i++) {
-//         let choice = currentQuestion.choices[i];
-//         let choiceList = document.createElement("ol")
-//         let choiceBtn = document.createElement("button");
-//         choiceList.appendChild(choiceBtn)
-//         choices.appendChild(choiceList)
-//         choiceBtn.classList.add("choice");
-//         choiceBtn.textContent = choice.text;
-//         choiceBtn.addEventListener("click", function() {
-//             if(choice.isCorrect) {
-//                 score++;
-//                 currentQuestionIndex++;
-//                 if(currentQuestionIndex < questionTO.length) {
-//                     displayQuestion(questionTO);
-//                 } else {
-//                     endGame()
-//                     clearInterval(timeInterval)
-//                 }
-//             } else {
-//                 // if choice is incorrect
-//                 time-=10
-//                 if(time >0) {
-//                     currentQuestionIndex++;
-//                     if(currentQuestionIndex < questionTO.length){
-//                         displayQuestion(questionTO);
-//                     }else {
-//                         endGame()
-//                         clearInterval(timeInterval)
-//                     }
-//                 }else {
-//                     endGame()
-//                     clearInterval(timeInterval)
-//                 }
-//             }
-//         });
-//     } 
-   
-// }
+submit.addEventListener("click", function(event){
+saveToLocalStorage()
+let location = window.location.href;
+let modifiedLocation = location.substr(0, location.lastIndexOf('/'))
+console.log(modifiedLocation)
+console.log(location)
+let newLocation = modifiedLocation + "/highscores.html";
+window.location.href = newLocation
+}
+)
 
-
-// if (choices = correctAnswer) {
-//     answer = true 
-//     score = score + 10
-// } else {
-//     answer = false
-//     time += time-1000
-// }
-
-
-
-
-
-
-
-function timer() { 
-    const element = document.getElementById("myBar");   
-    let width = 0;
-    const id = setInterval(frame, 10);
-    function frame() {
-      if (width == (question.length*1000)) {
-        clearInterval(id);
-      } else {
-        width++; 
-        element.style.width = width + '%'; 
-      }
+function saveToLocalStorage(){
+    let localStorageData = JSON.parse(localStorage.getItem("quiz_score"))
+    let finalObj = {
+        name: initials.value,
+        score: score -1
+    
     }
-  }
+    if (localStorageData === null){
+        localStorageData = [];
+        localStorageData.push(finalObj)
+    } else {
+        localStorageData.push(finalObj)
+    }
+
+    localStorage.setItem("quiz_score", JSON.stringify(localStorageData))
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TIMER BAR IF I HAVE TIME
+// function timer() { 
+//     const element = document.getElementById("myBar");   
+//     let width = 0;
+//     const id = setInterval(frame, 10);
+//     function frame() {
+//       if (width == (question.length*1000)) {
+//         clearInterval(id);
+//       } else {
+//         width++; 
+//         element.style.width = width + '%'; 
+//       }
+//     }
+//   }
+
+
+
+
+
+
+

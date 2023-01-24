@@ -26,8 +26,8 @@ let questions = [{
     },
     {
     Question: "How do  you return a random number from 5 to 99?",
-    option: ["Math.random(math.floor() +5) *99", "If (+5 *99) {math.random}", "Math.random(+5 *99)", "Math.floor(Math.random() * 99) + 5"],
-    correctAnswer: "Math.floor(Math.random() * 99) + 5"
+    option: ["Math.random(math.floor() +5) *99", "If (+5 *99) {math.random}", "Math.random(+5 *99)", "Math.floor(Math.random() *99) +5"],
+    correctAnswer: "Math.floor(Math.random() *99) +5"
     },
     {
     Question: "When does the “abort” HTML DOM Event occur?",
