@@ -18,7 +18,7 @@
   
   <br/>
   
-  <p> Please find the link to my deployed application <a href="https://tyrkgithub.github.io/bootstrap-portfolio](https://tyrkgithub.github.io/Code-Quiz">here.</a> </p>
+  <p> Please find the link to my deployed application <a href="https://tyrkgithub.github.io/Code-Quiz">here.</a> </p>
   
   <br/>
   
