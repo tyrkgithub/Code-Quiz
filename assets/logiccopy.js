@@ -138,7 +138,7 @@ function saveToLocalStorage(){
     let localStorageData = JSON.parse(localStorage.getItem("quiz_score"))
     let finalObj = {
         name: initials.value,
-        score: score -1
+        score: score
     
     }
     if (localStorageData === null){

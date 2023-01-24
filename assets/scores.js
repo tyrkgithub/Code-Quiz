@@ -1,5 +1,7 @@
-function getFromLocalStorage(){
 let localStorageData = JSON.parse(localStorage.getItem("quiz_score"))
+// let clearBtn = document.getElementById('clear')
+
+function getFromLocalStorage(){
 if (localStorageData != null) {
     let table = document.createElement('table')
     let tableRow = document.createElement('tr')
@@ -24,3 +26,13 @@ if (localStorageData != null) {
 }
 
 getFromLocalStorage()
+
+
+
+// clearBtn.addEventListener("click", function(event){
+//     event.preventDefault()
+//     localStorage.removeItem("quiz_score")
+//     localStorageData.clear
+//     localStorageData.name.rem
+
+// })
