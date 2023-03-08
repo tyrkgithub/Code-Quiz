@@ -5,11 +5,11 @@
   
  <br/>
   <ul>
-    <li><a href="https://github.com/tyrkgithub/code-quiz/blob/main/README.md#link">Link</a></li>
-    <li><a href="https://github.com/tyrkgithub/code-quiz/blob/main/README.md#acceptance-criteria">User Story</a></li>
-    <li><a href="https://github.com/tyrkgithub/code-quiz/blob/main/README.md#resources">Resources</a></li>
-    <li><a href="https://github.com/tyrkgithub/code-quiz/blob/main/README.md#visual-references">Visual References</a></li>
-    <li><a href="https://github.com/tyrkgithub/code-quiz/blob/main/README.md#notes">Notes</a></li>
+    <li><a href="https://github.com/tyrkgithub/Javascript-Knowledge-Quiz/blob/main/README.md#link">Link</a></li>
+    <li><a href="https://github.com/tyrkgithub/Javascript-Knowledge-Quiz/blob/main/README.md#acceptance-criteria">User Story</a></li>
+    <li><a href="https://github.com/tyrkgithub/Javascript-Knowledge-Quiz/blob/main/README.md#resources">Resources</a></li>
+    <li><a href="https://github.com/tyrkgithub/Javascript-Knowledge-Quiz/blob/main/README.md#visual-references">Visual References</a></li>
+    <li><a href="https://github.com/tyrkgithub/Javascript-Knowledge-Quiz/blob/main/README.md#notes">Notes</a></li>
   
   </ul>
   <br/>
@@ -18,7 +18,7 @@
   
   <br/>
   
-  <p> Please find the link to my deployed application <a href="https://tyrkgithub.github.io/Code-Quiz">here.</a> </p>
+  <p> Please find the link to my deployed application <a href="https://tyrkgithub.github.io/Javascript-Knowledge-Quiz">here.</a> </p>
   
   <br/>
   
